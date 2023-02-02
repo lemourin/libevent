@@ -232,7 +232,7 @@ create_tmpfile(WCHAR tmpfile[MAX_PATH])
 	GetTempPathW(MAX_PATH, short_path);
 	GetLongPathNameW(short_path, long_path, MAX_PATH);
 	if (!GetTempFileNameW(long_path, prefix, 0, tmpfile)) {
-		event_warnx("GetTempFileName failed: %d", EVUTIL_SOCKET_ERROR());
+		event_warnx("GetTempFileName failed: %d %ls", EVUTIL_SOCKET_ERROR(), long_path);
 		return -1;
 	}
 	return 0;
